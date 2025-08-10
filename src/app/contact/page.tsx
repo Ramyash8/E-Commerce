@@ -65,7 +65,7 @@ export default function ContactPage() {
             </div>
           </div>
            <div className="relative aspect-video w-full rounded-lg overflow-hidden">
-             <Image src="https://images.pexels.com/photos/220072/pexels-photo-220072.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Map" fill className="object-cover" data-ai-hint="map street" />
+             <Image src="https://images.pexels.com/photos/376081/pexels-photo-376081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Contact support" fill className="object-cover" data-ai-hint="contact support" />
            </div>
         </div>
       </div>
