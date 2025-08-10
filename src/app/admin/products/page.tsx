@@ -14,6 +14,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -31,10 +39,12 @@ import {
 import { getProducts, type Product } from "@/lib/products";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { AddProductForm } from "./_components/AddProductForm";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAddProductOpen, setIsAddProductOpen] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -45,6 +55,10 @@ export default function ProductsPage() {
     }
     fetchProducts();
   }, []);
+
+  const handleProductAdded = (newProduct: Product) => {
+    setProducts((prevProducts) => [newProduct, ...prevProducts]);
+  };
 
   const handleExport = () => {
     const headers = ["ID", "Name", "Price", "Stock", "Category", "Rating", "Featured"];
@@ -75,12 +89,25 @@ export default function ProductsPage() {
                   Export
                 </span>
             </Button>
-           <Button size="sm" className="h-8 gap-1">
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Add Product
-                </span>
-              </Button>
+            <Dialog open={isAddProductOpen} onOpenChange={setIsAddProductOpen}>
+                <DialogTrigger asChild>
+                    <Button size="sm" className="h-8 gap-1">
+                        <PlusCircle className="h-3.5 w-3.5" />
+                        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                        Add Product
+                        </span>
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                        <DialogTitle>Add New Product</DialogTitle>
+                        <DialogDescription>
+                            Fill in the details below to add a new product to your store.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <AddProductForm onProductAdded={handleProductAdded} setOpen={setIsAddProductOpen} />
+                </DialogContent>
+            </Dialog>
         </div>
       </CardHeader>
       <CardContent>
