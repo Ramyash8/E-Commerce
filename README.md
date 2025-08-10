@@ -63,6 +63,13 @@ The project follows a standard Next.js App Router structure:
 
 ---
 
+⚙️ Installation & Setup
+1️⃣ Clone Repository
+git clone https://github.com/your-username/shopsphere.git
+cd shopsphere
+2️⃣ Install Dependencies
+npm install
+
 for login credentials :
 Admin email-admin@shopsphere.com password-password123 
 
