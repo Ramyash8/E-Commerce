@@ -15,6 +15,8 @@ import { createOrder, type Order } from "@/lib/orders";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getSampleUserId } from "@/lib/users";
 
+type NewOrderData = Omit<Order, 'id' | 'createdAt'>;
+
 export default function CheckoutPage() {
     const { user, loading } = useAuth();
     const { cart, totalPrice, clearCart } = useCart();
@@ -49,7 +51,7 @@ export default function CheckoutPage() {
         }
 
         try {
-            const newOrderData = {
+            const newOrderData: NewOrderData = {
                 userId: sampleUserId,
                 customer: user.displayName || "Anonymous",
                 date: new Date().toLocaleDateString('en-CA'),
