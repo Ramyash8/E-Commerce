@@ -6,11 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { createProduct, type Product } from "@/lib/products";
-import { useRouter } from "next/navigation";
+import { createProduct, updateProduct, type Product } from "@/lib/products";
 import {
   Form,
   FormControl,
@@ -35,64 +33,80 @@ const formSchema = z.object({
   image4: z.string().url("Must be a valid URL").or(z.literal("")).optional(),
 });
 
-type AddProductFormValues = z.infer<typeof formSchema>;
+type ProductFormValues = z.infer<typeof formSchema>;
 
-interface AddProductFormProps {
-    onProductAdded: (newProduct: Product) => void;
+interface ProductFormProps {
+    product?: Product | null;
+    onSuccess: (product: Product) => void;
     setOpen: (open: boolean) => void;
 }
 
-export function AddProductForm({ onProductAdded, setOpen }: AddProductFormProps) {
-  const router = useRouter();
+export function ProductForm({ product, onSuccess, setOpen }: ProductFormProps) {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const isEditMode = !!product;
 
-  const form = useForm<AddProductFormValues>({
+  const defaultValues = {
+      name: product?.name || "",
+      description: product?.description || "",
+      price: product?.price || 0,
+      stock: product?.stock || 0,
+      category: product?.category || "",
+      featured: product?.featured || false,
+      image1: product?.images[0] || "",
+      image2: product?.images[1] || "",
+      image3: product?.images[2] || "",
+      image4: product?.images[3] || "",
+  }
+
+  const form = useForm<ProductFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      description: "",
-      price: 0,
-      stock: 0,
-      category: "",
-      featured: false,
-      image1: "",
-      image2: "",
-      image3: "",
-      image4: "",
-    },
+    defaultValues
   });
 
-  const onSubmit = async (values: AddProductFormValues) => {
+  const onSubmit = async (values: ProductFormValues) => {
     setIsLoading(true);
     try {
         const images = [values.image1, values.image2, values.image3, values.image4].filter(Boolean) as string[];
 
-        const newProductData = {
-            name: values.name,
-            description: values.description,
-            price: values.price,
-            stock: values.stock,
-            category: values.category,
-            featured: values.featured,
-            images,
-        };
+        if (isEditMode && product) {
+             const updatedProductData = {
+                ...product,
+                ...values,
+                images,
+            };
+            await updateProduct(product.id, updatedProductData);
+            onSuccess(updatedProductData);
+            toast({
+                title: "Product Updated!",
+                description: `${product.name} has been successfully updated.`,
+            });
+        } else {
+             const newProductData = {
+                name: values.name,
+                description: values.description,
+                price: values.price,
+                stock: values.stock,
+                category: values.category,
+                featured: values.featured,
+                images,
+            };
       
-        const newProduct = await createProduct(newProductData);
-
-        toast({
-            title: "Product Created!",
-            description: `${newProduct.name} has been successfully added.`,
-        });
-
-        onProductAdded(newProduct);
+            const newProduct = await createProduct(newProductData);
+            onSuccess(newProduct);
+            toast({
+                title: "Product Created!",
+                description: `${newProduct.name} has been successfully added.`,
+            });
+        }
+        
         setOpen(false);
         form.reset();
 
     } catch (error: any) {
         toast({
             title: "Uh oh! Something went wrong.",
-            description: "There was a problem creating the product.",
+            description: `There was a problem ${isEditMode ? 'updating' : 'creating'} the product.`,
             variant: "destructive",
         });
     } finally {
@@ -242,7 +256,7 @@ export function AddProductForm({ onProductAdded, setOpen }: AddProductFormProps)
             <div className="flex justify-end gap-2">
                  <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
                  <Button type="submit" disabled={isLoading}>
-                    {isLoading ? "Adding Product..." : "Add Product"}
+                    {isLoading ? (isEditMode ? "Saving..." : "Adding..." ) : (isEditMode ? "Save Changes" : "Add Product")}
                 </Button>
             </div>
         </form>
