@@ -70,7 +70,7 @@ export function AccountPageClient() {
     initializePage();
   }, [authUser, authLoading, router, userIdFromQuery]);
 
-  const user = viewedUser || (authUser ? { id: authUser.uid, name: authUser.displayName, email: authUser.email, orders:0, totalSpent: '' } : null);
+  const user = viewedUser || (authUser ? { id: authUser.uid, name: authUser.displayName, email: authUser.email, orders:0, totalSpent: 0 } : null);
 
   if (pageLoading || authLoading || !user) {
     return (
@@ -151,7 +151,7 @@ export function AccountPageClient() {
                                             {order.status}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className="text-right">{'\u20B9'}{order.total.toFixed(2)}</TableCell>
+                                    <TableCell className="text-right">{'\u20B9'}{(typeof order.total === 'string' ? parseFloat(order.total) : order.total).toFixed(2)}</TableCell>
                                     <TableCell className="text-right">
                                         <Button variant="outline" size="sm" asChild>
                                             <Link href={`/account/orders/${order.id}`}>

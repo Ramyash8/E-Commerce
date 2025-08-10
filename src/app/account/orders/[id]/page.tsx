@@ -36,6 +36,8 @@ export default async function OrderTrackingPage({ params }: OrderTrackingPagePro
         { name: "Delivered", icon: CheckCircle, step: 3 },
     ];
 
+    const orderTotal = typeof order.total === 'string' ? parseFloat(order.total) : order.total;
+
     return (
         <div className="container mx-auto px-4 md:px-6 py-12">
             <Card className="max-w-4xl mx-auto">
@@ -104,7 +106,7 @@ export default async function OrderTrackingPage({ params }: OrderTrackingPagePro
                         <Separator className="my-4"/>
                         <div className="flex justify-between font-bold text-lg">
                            <p>Total</p>
-                           <p>{order.total}</p>
+                           <p>{'\u20B9'}{orderTotal.toFixed(2)}</p>
                         </div>
                     </div>
                 </CardContent>
