@@ -63,11 +63,14 @@ The project follows a standard Next.js App Router structure:
 
 ---
 
-⚙️ Installation & Setup
-1️⃣ Clone Repository
+## ⚙️ Installation & Setup
 
+### 1️⃣ Clone Repository
+```bash
 git clone https://github.com/your-username/shopsphere.git
 cd shopsphere
+
+
 2️⃣ Install Dependencies
 npm install
 
