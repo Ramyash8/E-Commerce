@@ -77,6 +77,10 @@ npm install
 4️⃣ Run Development Server
 
 npm run dev
-for login credentials :
-Admin email-admin@shopsphere.com password-password123 
+
+🛡 Admin Access
+Login credentials:
+
+Email: admin@shopsphere.com
+Password: password123
 
