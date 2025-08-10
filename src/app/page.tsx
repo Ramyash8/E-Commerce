@@ -12,6 +12,7 @@ export default async function Home() {
   const homeDecorProducts = await getProductsByCategory('Home Decor');
   const bookProducts = await getProductsByCategory('Books');
   const personalCareProducts = await getProductsByCategory('Personal Care');
+  const gamingProducts = await getProductsByCategory('Gaming');
 
   return (
     <div className="flex flex-col">
@@ -19,14 +20,14 @@ export default async function Home() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl font-headline font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              Score the gear you want for less
+              Curated Collections, Unbeatable Prices
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Discover curated collections and find your new favorite essentials. Quality, style, and convenience, all in one place.
+              Discover your new favorite essentials. Quality, style, and convenience, all in one place.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button asChild size="lg">
-                <Link href="/shop">Shop Now</Link>
+                <Link href="/shop">Shop All Collections</Link>
               </Button>
             </div>
           </div>
@@ -78,8 +79,22 @@ export default async function Home() {
           <ProductCarousel products={electronicsProducts} />
         </div>
       </section>
+      
+      <section id="gaming-gear" className="w-full py-12 md:py-24 lg:py-32 bg-card/50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="space-y-2 mb-12 text-center">
+            <h2 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl">
+              Dominate the Game
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
+              Equip yourself with the best gaming gear for the ultimate experience.
+            </p>
+          </div>
+          <ProductCarousel products={gamingProducts} />
+        </div>
+      </section>
 
-      <section id="home-decor" className="w-full py-12 md:py-24 lg:py-32 bg-card/50">
+      <section id="home-decor" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="space-y-2 mb-12">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
@@ -93,7 +108,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="books" className="w-full py-12 md:py-24 lg:py-32">
+      <section id="books" className="w-full py-12 md:py-24 lg:py-32 bg-card/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="space-y-2 mb-12">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
@@ -107,7 +122,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="personal-care" className="w-full py-12 md:py-24 lg:py-32 bg-card/50">
+      <section id="personal-care" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 md:px-6 text-center">
            <div className="space-y-2 mb-12">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
@@ -124,3 +139,5 @@ export default async function Home() {
     </div>
   );
 }
+
+    
