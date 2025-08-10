@@ -65,7 +65,7 @@ export default function ContactPage() {
             </div>
           </div>
            <div className="relative aspect-video w-full rounded-lg overflow-hidden">
-             <Image src="https://images.pexels.com/photos/376081/pexels-photo-376081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Contact support" fill className="object-cover" data-ai-hint="contact support" />
+             <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGub4Wh_SwSc7LoifWyeEUSSHMctIc_d3SuHM4KUxU-A1iNJefSrnGBVgVNXKU-duZOA8&usqp=CAU" alt="Contact support" fill className="object-cover" data-ai-hint="contact support" />
            </div>
         </div>
       </div>
