@@ -101,8 +101,11 @@ This application is ready to be deployed on modern hosting platforms like Vercel
 
 1.  **Push to Git**: Push your code to a Git repository.
 2.  **Import to Netlify**: Go to your [Netlify dashboard](https://app.netlify.com/start) and import your repository.
-3.  **Add Environment Variables**: Netlify will use the `netlify.toml` file to configure the build. Go to **Site settings > Build & deploy > Environment** and add the same environment variables listed in the Vercel instructions above.
-4.  **Deploy**: Trigger a new deployment.
+3.  **Build Settings**: Netlify should automatically detect your Next.js project settings from the `netlify.toml` file. If you need to set them manually, use the following:
+    *   **Build command**: `next build`
+    *   **Publish directory**: `.next`
+4.  **Add Environment Variables**: Go to **Site settings > Build & deploy > Environment** and add the same environment variables listed in the Vercel instructions above.
+5.  **Deploy**: Trigger a new deployment.
 
 ## Seeding the Database
 
