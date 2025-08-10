@@ -1,3 +1,4 @@
+
 # ShopSphere - A Modern E-commerce Storefront
 
 Welcome to ShopSphere, a feature-rich e-commerce application built with a modern, full-stack technology set. This project serves as a comprehensive template for building production-ready online stores, complete with an admin dashboard, user authentication, product management, and a seamless shopping experience.
@@ -43,28 +44,14 @@ Follow these steps to get a local copy of the project up and running.
 
 ### 2. Firebase Setup
 
-This project requires a Firebase project to handle authentication and the database.
+This project uses a pre-configured Firebase project. The configuration is already included in the source code. For local development, you do not need to create a new Firebase project unless you wish to use your own backend.
 
-1.  Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project.
-2.  In your project, go to **Project Settings** > **General**.
-3.  Under "Your apps", click the **Web** icon (`</>`) to create a new web app.
-4.  Give your app a nickname and click **Register app**.
-5.  You will be presented with a `firebaseConfig` object. You will need these values for your environment variables.
+### 3. Environment Variables for Local Development
 
-### 3. Environment Variables
-
-Create a `.env.local` file in the root of your project and add your Firebase configuration keys. You will also need to add your Google AI (Gemini) API key for any AI-powered features.
+For local development, create a `.env.local` file in the root of your project. You only need to add your Gemini API key, as the Firebase keys are already hardcoded for the demo project.
 
 ```
-# Firebase Public Config
-NEXT_PUBLIC_FIREBASE_API_KEY="AIza..."
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="your-project-id.firebaseapp.com"
-NEXT_PUBLIC_FIREBASE_PROJECT_ID="your-project-id"
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="your-project-id.appspot.com"
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="1234567890"
-NEXT_PUBLIC_FIREBASE_APP_ID="1:1234567890:web:abcdef123456"
-
-# Genkit/Gemini API Key
+# Get your key from Google AI Studio: https://aistudio.google.com/app/apikey
 GEMINI_API_KEY="your-gemini-api-key"
 ```
 
@@ -88,31 +75,40 @@ npm run dev
 
 The application will be available at `http://localhost:9002`.
 
-## Seeding the Database
-
-To get started with sample data, you can use the database seeding utility in the admin dashboard.
-
-1.  Log in as the admin user (`admin@shopsphere.com`). You may need to create this user in your Firebase Authentication console first.
-2.  Navigate to the **Admin Dashboard**.
-3.  Go to the **Seed Database** page.
-4.  Click the **Start Seeding** button to populate your Firestore with sample products, users, and orders.
-
 ## Deployment
 
 This application is ready to be deployed on modern hosting platforms like Vercel or Netlify.
 
 ### Deploying with Vercel (Recommended)
 
-1.  Push your code to a Git repository (GitHub, GitLab, Bitbucket).
-2.  Go to the [Vercel dashboard](https://vercel.com/new) and import your repository.
-3.  Vercel will automatically detect the Next.js framework.
-4.  Go to the **Settings** tab of your new Vercel project and add the environment variables from your `.env.local` file.
-5.  Trigger a new deployment. Vercel will build and deploy your application.
+1.  **Push to Git**: Push your code to a Git repository (GitHub, GitLab, Bitbucket).
+2.  **Import to Vercel**: Go to the [Vercel dashboard](https://vercel.com/new) and import your repository. Vercel will automatically detect the Next.js framework.
+3.  **Add Environment Variables**: Go to the **Settings** tab of your new Vercel project and click on **Environment Variables**. Add the following variables one by one:
+
+| Name                                  | Value                                        |
+| ------------------------------------- | -------------------------------------------- |
+| `NEXT_PUBLIC_FIREBASE_API_KEY`        | `AIzaSyAtuuAjbL9pKPw45XK8vWBPtRGqgg_PBwM`    |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`    | `shopsphere-jz759.firebaseapp.com`           |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID`     | `shopsphere-jz759`                           |
+| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` | `shopsphere-jz759.appspot.com`               |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | `70281079862`                               |
+| `NEXT_PUBLIC_FIREBASE_APP_ID`         | `1:70281079862:web:930139378f04cc30033c97`  |
+| `GEMINI_API_KEY`                      | *Your actual Gemini API key*                 |
+
+4.  **Deploy**: Trigger a new deployment from the **Deployments** tab. Vercel will build and deploy your application.
 
 ### Deploying with Netlify
 
-1.  Push your code to a Git repository.
-2.  Go to your [Netlify dashboard](https://app.netlify.com/start) and import your repository.
-3.  Netlify will use the `netlify.toml` file included in this project to configure the build.
-4.  Go to **Site settings > Build & deploy > Environment** and add your environment variables.
-5.  Trigger a new deployment.
+1.  **Push to Git**: Push your code to a Git repository.
+2.  **Import to Netlify**: Go to your [Netlify dashboard](https://app.netlify.com/start) and import your repository.
+3.  **Add Environment Variables**: Netlify will use the `netlify.toml` file to configure the build. Go to **Site settings > Build & deploy > Environment** and add the same environment variables listed in the Vercel instructions above.
+4.  **Deploy**: Trigger a new deployment.
+
+## Seeding the Database
+
+To get started with sample data, you can use the database seeding utility in the admin dashboard.
+
+1.  Log in as the admin user (`admin@shopsphere.com` / password: `admin123`). You may need to create this user in your Firebase Authentication console first.
+2.  Navigate to the **Admin Dashboard**.
+3.  Go to the **Seed Database** page.
+4.  Click the **Start Seeding** button to populate your Firestore with sample products, users, and orders.
