@@ -36,13 +36,17 @@ export default function Header() {
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
   const wishlistItemCount = wishlist.length;
 
+  const isAdmin = user && user.email === 'admin@shopsphere.com';
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/shop", label: "Shop" },
     { href: "/contact", label: "Contact" },
   ];
 
-  const isAdmin = user && user.email === 'admin@shopsphere.com';
+  if (isAdmin) {
+    navLinks.push({ href: "/admin", label: "Dashboard" });
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
