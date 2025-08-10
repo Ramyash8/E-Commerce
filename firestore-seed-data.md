@@ -640,7 +640,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Accessories",
     "featured": false,
     "stock": 110,
-    "reviews": []
+    "reviews": [
+        { "id": "rev39", "author": "Riya K.", "rating": 5, "comment": "Spacious and sturdy. Perfect for my daily needs.", "date": "2024-06-16" },
+        { "id": "rev40", "author": "Amit S.", "rating": 4, "comment": "Love the simple design. Great quality for the price.", "date": "2024-06-17" }
+    ]
   },
   {
     "id": "26",
@@ -655,7 +658,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Books",
     "featured": false,
     "stock": 200,
-    "reviews": []
+    "reviews": [
+        { "id": "rev41", "author": "Deepak G.", "rating": 5, "comment": "This book is life-changing. A must-read for self-improvement.", "date": "2024-06-18" },
+        { "id": "rev42", "author": "Neha P.", "rating": 5, "comment": "Practical and easy-to-follow advice. Highly recommend.", "date": "2024-06-19" }
+    ]
   },
   {
     "id": "27",
@@ -670,7 +676,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Home Decor",
     "featured": false,
     "stock": 30,
-    "reviews": []
+    "reviews": [
+        { "id": "rev43", "author": "Sunita V.", "rating": 5, "comment": "Looks so sleek and modern on my wall. Completely silent!", "date": "2024-06-20" },
+        { "id": "rev44", "author": "Rajesh B.", "rating": 4, "comment": "Great clock, exactly as described. A bit difficult to hang.", "date": "2024-06-21" }
+    ]
   },
   {
     "id": "28",
@@ -685,7 +694,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Gaming",
     "featured": false,
     "stock": 45,
-    "reviews": []
+    "reviews": [
+        { "id": "rev45", "author": "GamerPro91", "rating": 5, "comment": "Super responsive and comfortable for long gaming sessions.", "date": "2024-06-22" },
+        { "id": "rev46", "author": "Anjali M.", "rating": 5, "comment": "The customizable buttons are a game-changer. Great battery life too.", "date": "2024-06-23" }
+    ]
   },
   {
     "id": "29",
@@ -700,7 +712,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Electronics",
     "featured": false,
     "stock": 25,
-    "reviews": []
+    "reviews": [
+        { "id": "rev47", "author": "Vikram C.", "rating": 5, "comment": "Love being able to control the temperature from my phone. It's already saving me money on my energy bills.", "date": "2024-06-24" },
+        { "id": "rev48", "author": "Pooja T.", "rating": 5, "comment": "Easy to install and the learning feature is very smart.", "date": "2024-06-25" }
+    ]
   },
   {
     "id": "30",
@@ -715,7 +730,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Home Decor",
     "featured": false,
     "stock": 50,
-    "reviews": []
+    "reviews": [
+        { "id": "rev49", "author": "Meena J.", "rating": 5, "comment": "So soft and the color is perfect for my living room.", "date": "2024-06-26" },
+        { "id": "rev50", "author": "Sameer K.", "rating": 4, "comment": "Great quality pillows. They add a nice touch to the sofa.", "date": "2024-06-27" }
+    ]
   },
   {
     "id": "31",
@@ -730,7 +748,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Sneakers",
     "featured": false,
     "stock": 35,
-    "reviews": []
+    "reviews": [
+        { "id": "rev51", "author": "Arjun R.", "rating": 5, "comment": "Incredibly lightweight and cushioned. My new favorite running shoes.", "date": "2024-06-28" },
+        { "id": "rev52", "author": "Priya D.", "rating": 4, "comment": "Excellent for long runs. The sole is very supportive.", "date": "2024-06-29" }
+    ]
   },
   {
     "id": "32",
@@ -745,7 +766,10 @@ This file contains the sample data for your e-commerce application in JSON forma
     "category": "Books",
     "featured": false,
     "stock": 180,
-    "reviews": []
+    "reviews": [
+        { "id": "rev53", "author": "Kavita L.", "rating": 5, "comment": "A beautifully written story that will stay with you long after you finish.", "date": "2024-06-30" },
+        { "id": "rev54", "author": "Reader's Digest", "rating": 5, "comment": "An unforgettable novel. The characters are so well-developed.", "date": "2024-07-01" }
+    ]
   }
 ]
 ```
