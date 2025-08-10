@@ -30,9 +30,9 @@ const formSchema = z.object({
   category: z.string().min(1, "Category is required"),
   featured: z.boolean().default(false),
   image1: z.string().url("Must be a valid URL").min(1, "At least one image is required"),
-  image2: z.string().url("Must be a valid URL").optional(),
-  image3: z.string().url("Must be a valid URL").optional(),
-  image4: z.string().url("Must be a valid URL").optional(),
+  image2: z.string().url("Must be a valid URL").or(z.literal("")).optional(),
+  image3: z.string().url("Must be a valid URL").or(z.literal("")).optional(),
+  image4: z.string().url("Must be a valid URL").or(z.literal("")).optional(),
 });
 
 type AddProductFormValues = z.infer<typeof formSchema>;
@@ -177,7 +177,7 @@ export function AddProductForm({ onProductAdded, setOpen }: AddProductFormProps)
                 name="image1"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Image URL 1</FormLabel>
+                    <FormLabel>Image URL 1 (Required)</FormLabel>
                     <FormControl>
                     <Input placeholder="https://example.com/image.png" {...field} />
                     </FormControl>
