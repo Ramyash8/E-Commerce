@@ -63,4 +63,6 @@ The project follows a standard Next.js App Router structure:
 
 ---
 
-This application was built with the help of an AI assistant.
+for login credentials :
+Admin email-admin@shopsphere.com password-password123 
+
