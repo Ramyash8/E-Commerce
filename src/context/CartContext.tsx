@@ -1,7 +1,7 @@
 
 "use client";
 
-import type { Product } from "@/lib/db/products";
+import type { Product } from "@/lib/products";
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 export interface CartItem extends Product {

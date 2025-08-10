@@ -2,9 +2,14 @@
 import { collection, getDocs, query, where, limit, doc, setDoc, getDoc } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { app } from './firebase';
-import type { User as DbUser } from './db/users';
 
-export interface User extends DbUser {}
+export interface User {
+    id: string;
+    name: string;
+    email: string;
+    orders: number;
+    totalSpent: string;
+}
 
 const db = getFirestore(app);
 const usersCollection = collection(db, 'users');

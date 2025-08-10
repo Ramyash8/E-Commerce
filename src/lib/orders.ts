@@ -2,11 +2,15 @@
 import { collection, getDocs, doc, getDoc, query, where, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { app } from './firebase';
-import type { Order as DbOrder } from './db/orders';
 
-// The Order type used throughout the app
-export interface Order extends Omit<DbOrder, 'id'> {
+export interface Order {
     id: string;
+    userId: string;
+    customer: string;
+    date: string;
+    status: 'Fulfilled' | 'Pending' | 'Cancelled' | 'Shipped' | 'Processing';
+    total: string;
+    items: { name: string; quantity: number }[];
     createdAt?: Timestamp | string;
 }
 
